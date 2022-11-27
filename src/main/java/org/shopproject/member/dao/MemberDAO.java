@@ -2,6 +2,7 @@ package org.shopproject.member.dao;
 
 import org.shopproject.member.db.ConnectionPoolMgr;
 import org.shopproject.member.db.JDBCMgr;
+import org.shopproject.member.dto.MemberDTO;
 import org.shopproject.member.entity.Members;
 
 
@@ -82,7 +83,28 @@ public class MemberDAO {
     }
 
 
+    public MemberDTO selectUserOne(String mId) {
+        MemberDTO member = null;
+        try {
+            conn = connectionPoolMgr.getConnection();
+            stmt = conn.prepareStatement(MEMBER_SELECT_ONE);
+            stmt.setString(1, mId);
 
+            rs = stmt.executeQuery();
 
+            if (rs.next()) {
+                String mName = rs.getString("mName");
+                int mPoint = rs.getInt("mPoint");
+                member = new MemberDTO(mName, mPoint);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connectionPoolMgr.freeConnection(conn,stmt, rs);
+        }
+        return member;
 
+    }
 }
