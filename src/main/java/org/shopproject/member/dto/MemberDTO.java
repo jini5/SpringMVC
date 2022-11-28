@@ -10,11 +10,20 @@ public class MemberDTO {
     private String mName = "";
     private String mAddress = "";
     private String mPhoneNumber = "";
-    private String mPoint = "";
+    private int mPoint;
     private String mMoney = "";
     private String mCardCompany = "";
     private String mCardNumber = "";
 
+    public MemberDTO(String mId, String mPw) {
+        this.mId = mId;
+        this.mPw = mPw;
+    }
+
+    public MemberDTO(String mName, int mPoint) {
+        this.mName = mName;
+        this.mPoint= mPoint;
+    }
 
 
     public Members toEntity(){
@@ -77,11 +86,11 @@ public class MemberDTO {
         this.mPhoneNumber = mPhoneNumber;
     }
 
-    public String getmPoint() {
+    public int getmPoint() {
         return mPoint;
     }
 
-    public void setmPoint(String mPoint) {
+    public void setmPoint(int mPoint) {
         this.mPoint = mPoint;
     }
 

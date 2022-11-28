@@ -8,7 +8,7 @@ public class Members {
     private String mName = "";
     private String mAddress = "";
     private String mPhoneNumber = "";
-    private String mPoint = "";
+    private int mPoint;
     private String mMoney = "";
     private String mCardCompany = "";
     private String mCardNumber = "";
@@ -68,11 +68,11 @@ public class Members {
         this.mPhoneNumber = mPhoneNumber;
     }
 
-    public String getmPoint() {
+    public int getmPoint() {
         return mPoint;
     }
 
-    public void setmPoint(String mPoint) {
+    public void setmPoint(int mPoint) {
         this.mPoint = mPoint;
     }
 
